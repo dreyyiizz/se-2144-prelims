@@ -125,6 +125,8 @@ function hello() {
     ];
     const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
     display.value = randomGreeting;
-    
+    setTimeout(() =>{
+        display.value = "";
+    },2000)
 }
 
