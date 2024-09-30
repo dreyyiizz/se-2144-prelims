@@ -42,7 +42,6 @@
 }
 
 
-
 button {
   border: none;
   width: 90px;
@@ -69,4 +68,16 @@ button {
 
 #operator:hover{
   background-color: #FFB341;
+}
+
+#bye-key:hover{
+  background-color: maroon;
+}
+
+#calculate-key:hover{
+  background-color: #50c878;
+}
+
+#hello-key:hover{
+  background-color: navy;
 }
