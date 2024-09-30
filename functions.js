@@ -125,9 +125,6 @@ function hello() {
     ];
     const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
     display.value = randomGreeting;
-    display.disabled = false;
-    buttons.forEach(button => {
-      button.disabled = false;
-    });
+    
 }
 
