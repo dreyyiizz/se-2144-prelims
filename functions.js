@@ -7,7 +7,7 @@ function appendToDisplay(input) {
 
         // Prevents double decimal
         const currentValue = display.value;
-        const lastNumber = currentValue.split(/[\+\-\*\/]/).pop(); // Get the last number before any operator
+        const lastNumber = currentValue.split(/[\+\-\*\/]/); // Get the last number before any operator
         
         if (input === '.' && lastNumber.includes('.')) {
             return; // Don't allow adding another decimal point to the same number
@@ -58,16 +58,17 @@ function remove() {
 // turns of the calculator
 function bye() {
     display.value = "Goodbye";
-    display.disabled = true; // disables the display
+    display.disabled = true;// disables the display
     buttons.forEach(button => {
         if (button.innerText !== "AC") {
-            button.disabled = true; // disables the display for all buttons
+            button.disabled = true;// disables the display for all buttons
         }
     });
 
+    
     setTimeout(() => {
         display.value ="";
-    }, 1000); // sets the time the goodbye appears
+    }, 1000);// sets the time the goodbye appears
 }
 
 function hello() {
