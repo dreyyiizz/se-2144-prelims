@@ -40,6 +40,8 @@ function clearDisplay() {
 function calculate() {
     if (!display.disabled) {
         try {
+            display.value = display.value.replace('÷', '/')
+            display.value = display.value.replace('x', '*')
             display.value = eval(display.value);
         } catch (error) {
             display.value = "Syntax Error"; // if the provided numbers causes an error it displays syntax error
