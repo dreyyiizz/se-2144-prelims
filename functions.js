@@ -7,7 +7,7 @@ function appendToDisplay(input) {
 
         // Prevents double decimal
         const currentValue = display.value;
-        const lastNumber = currentValue.split(/[\+\-\*\/]/).pop(); // Get the last number before any operator
+        const lastNumber = currentValue.split(/[\+\-\*\/]/); // Get the last number before any operator
         
         if (input === '.' && lastNumber.includes('.')) {
             return; // Don't allow adding another decimal point to the same number
