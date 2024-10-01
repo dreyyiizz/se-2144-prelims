@@ -1,10 +1,18 @@
 const display = document.querySelector("#display");
 const buttons = document.querySelectorAll("#buttons button");
-const greetings = ["Hello", "Hola", "Bonjour", "Hallo", "Ciao", "こんにちは", "안녕하세요", "你好", "Привет", "مرحبا"];
 
 //Appends a value inside the display
 function appendToDisplay(input) {
     if (!display.disabled) {
+
+        // Prevents double decimal
+        const currentValue = display.value;
+        const lastNumber = currentValue.split(/[\+\-\*\/]/).pop(); // Get the last number before any operator
+        
+        if (input === '.' && lastNumber.includes('.')) {
+            return; // Don't allow adding another decimal point to the same number
+        }
+
         display.value += input;
     }
 }
@@ -12,19 +20,19 @@ function appendToDisplay(input) {
 //Clears the display
 function clearDisplay() {
     if (display.disabled) {
-        display.disabled = false;
         display.value = "Hello";
 
-        //enables all button to function
+        //enables all buttons to function
         buttons.forEach(button => {
             button.disabled = false
         });
         setTimeout(() =>{
             display.value = "";
-        },3000)
+            display.disabled = false;
+        },2000)
     } 
     else {
-        display.value = "";
+        display.value = ""; // clears the display if it is not turned off
     }
 }
 
@@ -34,7 +42,7 @@ function calculate() {
         try {
             display.value = eval(display.value);
         } catch (error) {
-            display.value = "Error";
+            display.value = "Syntax Error"; // if the provided numbers causes an error it displays syntax error
         }
     }
 }
@@ -47,19 +55,19 @@ function remove() {
     }
 }
 
+// turns of the calculator
 function bye() {
     display.value = "Goodbye";
-    display.disabled = true;
+    display.disabled = true; // disables the display
     buttons.forEach(button => {
         if (button.innerText !== "AC") {
-            button.disabled = true;
+            button.disabled = true; // disables the display for all buttons
         }
     });
 
-    
     setTimeout(() => {
         display.value ="";
-    }, 1000);
+    }, 1000); // sets the time the goodbye appears
 }
 
 function hello() {
@@ -125,8 +133,9 @@ function hello() {
     ];
     const randomGreeting = greetings[Math.floor(Math.random() * greetings.length)];
     display.value = randomGreeting;
+    display.disabled = true;
     setTimeout(() =>{
         display.value = "";
-    },2000)
+        display.disabled = false
+    },5000)
 }
-
